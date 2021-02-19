@@ -1,9 +1,11 @@
 
 import { combineReducers } from 'redux'
-import counterReducer from './counterReducer'
+import formDataReducer from './formDataReducer'
+import filterReducer from './filterReducer'
 
 const rootReducer = combineReducers({
-    counter: counterReducer
+    formData: formDataReducer,
+    filteredArray: filterReducer
 })
 
 export default rootReducer

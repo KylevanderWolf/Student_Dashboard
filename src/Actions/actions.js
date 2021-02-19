@@ -1,13 +1,20 @@
-export const increment = (data) => {
+export const formData = (data) => {
     return {
-        type: 'INCREMENT',
+        type: 'FORMDATA',
         payload: data
     }
 }
 
-export const decrement = (data) => {
+export const addFavorite = (data) => {
     return {
-        type: 'DECREMENT',
+        type: 'ADD_FAVORITE',
+        payload: data
+    }
+}
+
+export const filteredArray = (data) => {
+    return {
+        type: 'ADD_FILTER',
         payload: data
     }
 }
