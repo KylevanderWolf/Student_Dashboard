@@ -1,11 +1,16 @@
 
 import { combineReducers } from 'redux'
-import formDataReducer from './formDataReducer'
-import filterReducer from './filterReducer'
+import clientReducer from '../Reducers/clientReducer'
+import dentistReducer from '../Reducers/dentistReducer'
+import assistentReducer from '../Reducers/assistentReducer'
+import AllAppointments from '../Reducers/allAppointmentsReducer'
 
 const rootReducer = combineReducers({
-    formData: formDataReducer,
-    filteredArray: filterReducer
+    dentists: dentistReducer,
+    assistents: assistentReducer,
+    clients: clientReducer,
+    allAppointments: AllAppointments,
 })
 
 export default rootReducer
+
