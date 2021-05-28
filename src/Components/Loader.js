@@ -7,7 +7,7 @@ const LoaderContainer = styled.div`
 display: flex;
 height: 100vh;
 flex-direction: column;
-background-color: white;
+background-color: #282C38;
 justify-content: center;
 align-items: center;
 `

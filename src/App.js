@@ -1,35 +1,29 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import React, { lazy, Suspense, useEffect } from 'react';
+import React, { lazy, Suspense } from 'react';
+import UserProfile from './Components/UserProfile'
 import Loader from './Components/Loader'
-import RandomAppointments from './Components/Random'
-import { useDispatch } from 'react-redux';
-import { allAppointments } from './Actions/AppointmentActions'
-
+import { useTheme, StylesProvider } from "@material-ui/core/styles";
+import { ThemeProvider as SCThemeProvider } from "styled-components";
 const Home = lazy(() => import('./Components/HomePage'));
-const Calender = lazy(() => import('./Components/CalenderView'));
-const AllClients = lazy(() => import('./Components/AllClients'));
-const AllAssistents = lazy(() => import('./Components/AllAssistents'));
-const AllDentists = lazy(() => import('./Components/AllDentists'));
+
+
 
 const App = () => {
-    const dispatch = useDispatch()
-    const allRandomAppointments = RandomAppointments()
-    useEffect(() => {
-        dispatch(allAppointments(allRandomAppointments))
-    }, [])
-
+    const muiTheme = useTheme();
     return (
-        <BrowserRouter>
-            <Suspense fallback={<Loader />}>
-                <Switch>
-                    <Route exact path="/" render={() => <Home />} />
-                    <Route exact path="/Tandartsen" render={() => <AllDentists />} />
-                    <Route exact path="/Assistenten" render={() => <AllAssistents />} />
-                    <Route exact path="/Cliënten" render={() => <AllClients />} />
-                    <Route exact path="/Calender" render={() => <Calender />} />
-                </Switch>
-            </Suspense>
-        </BrowserRouter >
+        <StylesProvider injectFirst>
+            <SCThemeProvider theme={muiTheme}>
+                <BrowserRouter >
+                    <Suspense fallback={<Loader />}>
+                        <Switch >
+                            <Route exact path="/" render={() => <Home />} />
+                            <Route exact path="/:studentname" render={() => <UserProfile />} />
+                        </Switch>
+                    </Suspense >
+                </BrowserRouter >
+            </SCThemeProvider>
+        </StylesProvider>
+
     );
 }
 
